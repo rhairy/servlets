@@ -24,8 +24,38 @@
       <version>3.0.1</version>
       <scope>provided</scope>
     </dependency>
+    <dependency>
+        <groupId>org.postgresql</groupId>
+        <artifactId>postgresql</artifactId>
+    <version>42.2.18</version>
+    </dependency>
   </dependencies>
   <build>
+    <plugins>
+        <plugin>
+            <groupId>org.apache.maven.plugins</groupId>
+            <artifactId>maven-resources-plugin</artifactId>
+            <version>2.4.2</version>
+            <executions>
+                <execution>
+                <id>default-copy-resources</id>
+                <phase>process-resources</phase>
+                <goals>
+                    <goal>copy-resources</goal>
+                </goals>
+                <configuration>
+                <overwrite>true</overwrite>
+                <outputDirectory>${project.build.directory}/${project.artifactId}-${project.version}/WEB-INF/classes</outputDirectory>
+                <resources>
+                    <resource>
+                    <directory>${project.basedir}/src/main/resources</directory>
+                    </resource>
+                </resources>
+                </configuration>
+             </execution>
+            </executions>
+        </plugin>
+      </plugins>
     <finalName>my_servlet</finalName>
   </build>
 </project>
