@@ -50,11 +50,11 @@ public class ServletFacts extends HttpServlet {
     }
     
     private Connection sqlConnect() throws Exception {
-        String dbName = System.getenv("RDS_DB_NAME");
-        String userName = System.getenv("RDS_USERNAME");
-        String password = System.getenv("RDS_PASSWORD");
-        String hostname = System.getenv("RDS_HOSTNAME");
-        String port = System.getenv("RDS_PORT");
+        String dbName = System.getProperty("RDS_DB_NAME");
+        String userName = System.getProperty("RDS_USERNAME");
+        String password = System.getProperty("RDS_PASSWORD");
+        String hostname = System.getProperty("RDS_HOSTNAME");
+        String port = System.getProperty("RDS_PORT");
         String jdbcUrl = "jdbc:postgresql://" + hostname + ":" + port + "/" + dbName + "?user=" + userName + "&password=" + password;
         
         // Declare and load Postgresql driver class.
